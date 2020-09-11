@@ -14,7 +14,15 @@ export default
 	components:
 	{
 		Home
-	}
+	},
+	props:
+	{},
+	data: () =>
+	({}),
+	computed:
+	{},
+	methods:
+	{}
 }
 </script>
 
