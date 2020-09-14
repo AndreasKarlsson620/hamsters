@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png" />
         <HelloWorld msg="Welcome to Your Vue.js App" />
@@ -17,6 +18,25 @@ export default {
         Upload,
     },
 };
+=======
+	<div id="app">
+		<Home/>
+	</div>
+</template>
+
+<script>
+
+import Home from './components/Home.vue'
+
+export default
+{
+	name: 'App',
+	components:
+	{
+		Home
+	}
+}
+>>>>>>> 4c5b80ea5ea2f44cd3badf3eb347c30448f66fad
 </script>
 
 <style>
