@@ -1,6 +1,5 @@
-//Kom ihåg - Innan du pushar till dev så ändra tillbaka så att alla componenter blir synliga
 
-//Att göra: När man klickar på submit körs en funktion som skickar ett post-request till routen.
+//Att göra: När man klickar på submit körs en funktion som skickar ett post-request till routen
 <template>
     <div class="template-div">
         <h1>Testing testing</h1>
