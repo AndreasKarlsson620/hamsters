@@ -1,18 +1,19 @@
 <template>
     <div id="app">
         <Home />
+        <Upload />
     </div>
 </template>
 
 <script>
 import Home from "./components/Home.vue";
-
-import Home from "./components/Home.vue";
+import Upload from "./components/Upload.vue";
 
 export default {
     name: "App",
     components: {
         Home,
+        Upload,
     },
     props: {},
     data: () => ({}),
