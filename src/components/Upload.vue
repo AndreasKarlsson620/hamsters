@@ -34,6 +34,8 @@
                 <button @click.prevent="submit" type="submit">Submit</button>
             </form>
         </div>
+        <p v-if="success">{{hamster.name + " är sparad!"}}</p>
+        <p v-if="error">Oops! Något gick fel.</p>
     </div>
 </template>
 
@@ -48,11 +50,26 @@ export default {
                 loves: "",
                 url: "",
             },
+            error: false,
+            success: false,
         };
     },
     methods: {
         submit: function () {
-            console.log("Här är hamster objektet", this.hamster);
+            console.log("Detta är hamster-objektet som skickas", this.hamster);
+
+            axios
+                .post("/upload", this.hamster)
+                .then((response) => {
+                    console.log("Detta är response", response.data);
+                    if (response === 200) {
+                        success = true;
+                    }
+                })
+                .catch((error) => {
+                    console.log("Error", error.message);
+                    error = true;
+                });
         },
     },
 };
