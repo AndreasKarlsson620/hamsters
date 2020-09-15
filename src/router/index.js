@@ -1,6 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Battle from "../views/Battle.vue";
+import Statistics from "../views/Statistics.vue";
+import Upload from "../views/Upload.vue";
+import Battle2 from "../views/Battles/Battle2.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +22,26 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+  {
+    path: "/battle",
+    name: "Battle",
+    component: Battle
+  },
+  {
+    path: "/statistics",
+    name: "Statistics",
+    component: Statistics
+  },
+  {
+    path: "/upload",
+    name: "Upload",
+    component: Upload
+  },
+  {
+    path: "/Battles/battle2",
+    name: "Battle2",
+    component: Battle2
   }
 ];
 

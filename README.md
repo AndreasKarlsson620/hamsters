@@ -1,4 +1,4 @@
-# tajarob
+# Hamsters
 
 ## Project setup
 ```
