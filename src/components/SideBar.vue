@@ -16,7 +16,7 @@ export default {
 <style scoped>
 #nav {
     position: relative;
-  background-color:  #2c3e50;
+    background-color:  #87ADBA;
     height: 100%;
     padding: 30px 30px 30px 0;
     padding-top: 100px;
@@ -34,7 +34,7 @@ export default {
   width: 100%;
   height: 80px;
   font-weight: bold;
-  background-color:  #2c3e50;
+  background-color:  #87ADBA;
   display: flex;
   align-items: center;
   justify-content: center;
