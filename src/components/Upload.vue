@@ -7,6 +7,7 @@
 
         <div class="form">
             <form>
+                <h4>Upload a hamster</h4>
                 <div>
                     <label>Name</label>
                     <input v-model="hamster.name" type="text" required />
@@ -28,24 +29,28 @@
                 </div>
 
                 <div>
-                    <label>Photo</label>
+                    <label>Img url</label>
                     <input v-model="hamster.url" type="url" required />
                 </div>
                 <button @click.prevent="submit" type="submit">Submit</button>
+                <div>
+                    <p v-if="success">{{hamster.name + " är sparad!"}}</p>
+                    <p v-if="error">Oops! Något gick fel.</p>
+                </div>
             </form>
         </div>
-        <p v-if="success">{{hamster.name + " är sparad!"}}</p>
-        <p v-if="error">Oops! Något gick fel.</p>
     </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     data() {
         return {
             hamster: {
                 name: "",
-                age: "",
+                age: Number,
                 food: "",
                 loves: "",
                 url: "",
@@ -63,12 +68,12 @@ export default {
                 .then((response) => {
                     console.log("Detta är response", response.data);
                     if (response === 200) {
-                        success = true;
+                        this.success = true;
                     }
                 })
                 .catch((error) => {
                     console.log("Error", error.message);
-                    error = true;
+                    this.error = true;
                 });
         },
     },
@@ -79,6 +84,7 @@ export default {
 .template-div {
     background-color: #96b6c1;
 }
+
 .form {
     background-color: #ffda7b;
     width: 200px;
@@ -101,5 +107,9 @@ input {
 button {
     background-color: #ff937b;
     border-radius: 5px;
+    margin: 20px;
+    border: none;
+    width: 55px;
+    height: 21px;
 }
 </style>
