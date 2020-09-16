@@ -13,7 +13,8 @@
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "mongodb": "^3.6.1",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuelidate": "^0.7.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
