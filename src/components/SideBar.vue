@@ -1,6 +1,6 @@
 <template>
     <div id="nav">
-      <!-- <span class="icon"><router-link to="/">Home</router-link></span> -->
+      <span class="icon"><router-link to="/">Home</router-link></span>
       <div class="nav_el"><router-link to="/battle">Battle</router-link></div>
       <div class="nav_el"><router-link to="/statistics">Statistics</router-link></div>
       <div class="nav_el"><router-link to="/upload">Upload</router-link></div>
@@ -16,7 +16,7 @@ export default {
 <style scoped>
 #nav {
     position: relative;
-    background-color:  #87ADBA;
+  background-color:  #2c3e50;
     height: 100%;
     padding: 30px 30px 30px 0;
     padding-top: 100px;
@@ -34,7 +34,7 @@ export default {
   width: 100%;
   height: 80px;
   font-weight: bold;
-  background-color:  #87ADBA;
+  background-color:  #2c3e50;
   display: flex;
   align-items: center;
   justify-content: center;
