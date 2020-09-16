@@ -3,7 +3,7 @@
         <Home />
         <Upload />
         <SideBar />
-        <router-view id="main_content"/>
+        <!-- <router-view id="main_content"/> -->
     </div>
 </template>
 
