@@ -4,6 +4,7 @@ node_modules
 
 
 # local env files
+.prettierignore
 .env.local
 .env.*.local
 
