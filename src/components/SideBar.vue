@@ -1,11 +1,9 @@
 <template>
   <div id="nav">
-    <span class="icon"><router-link to="/">Home</router-link></span>
-    <div class="nav_el"><router-link to="/battle">Battle</router-link></div>
-    <div class="nav_el">
-      <router-link to="/statistics">Statistics</router-link>
-    </div>
-    <div class="nav_el"><router-link to="/upload">Upload</router-link></div>
+    <router-link to="/" class="nav_el">Home</router-link>
+    <router-link to="/battle" class="nav_el">Battle</router-link>
+    <router-link to="/statistics" class="nav_el">Statistics</router-link>
+    <router-link to="/upload" class="nav_el">Upload</router-link>
   </div>
 </template>
 
@@ -21,32 +19,15 @@ export default {
   background-color: #2c3e50;
   height: 100%;
   padding: 30px 30px 30px 0;
-  padding-top: 100px;
   grid-column-start: 1;
   grid-column-end: 2;
   display: flex;
   flex-direction: column;
 }
 
-.icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  font-weight: bold;
-  background-color: #2c3e50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon > *,
 div > * {
   text-decoration: none;
   color: black;
-}
-.icon > * {
-  color: white;
 }
 
 .nav_el {
@@ -61,13 +42,16 @@ div > * {
   justify-content: center;
 }
 
-#nav:last-child {
-  margin-bottom: 20px;
+.nav_el:hover{
+    background-color:  #ff937b
 }
 
-/*
-.router-link-exact-active {
-  color: #42b983;
+#nav:last-child {
+    margin-bottom: 20px;
 }
-*/
+
+.router-link-exact-active {
+    background-color:#ff937b;
+}
+
 </style>
