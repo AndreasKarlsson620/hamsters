@@ -1,6 +1,22 @@
 <template>
     <div class="container">
+        <div id="navbar">
+        <!-- Latest Snippet-->
+        <button v-on:click="Result">Result</button>
+        
+        
+         <br>
+    </div>
         <h1>Battle 1</h1>
+         <div  id="contain" v-for="Hamster in ApiData" v-bind:key="Hamster.id">
+                  <h2 id="id"> {{ Hamster.id}}</h2>         
+                  <p id="age"> {{ Hamster.age}}</p>
+                  <p id="favFood">{{ Hamster.favFood}}</p>
+                  <p id="loves"> {{ Hamster.loves}}</p>
+                  <p id="image"> {{ Hamster.image}}</p>
+                  <button v-on:click="vote(Hamster.id)">vote for cute Hamster</button>
+                 
+      </div>
         <h3>Pick one</h3>
         <div class="btl_fieled"></div>
         <div class="btm">
@@ -11,8 +27,36 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name: "Battle",
+     data () {
+    return {
+      ApiData: [],
+    }
+  },
+  mounted(){
+      axios
+      .get('https://localhost:1357/battle')
+      .then(response => (this.ApiData = response.data))
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  vote(id){
+      axios
+        .post('https://localhost:1357//battle/:id1/:id2',{vote:'',id1: id1,id2:id2})
+        .then(response => {console.log(response.data)
+                if(response !== null){
+                    this.result();
+          }  }) 
+        .catch(error => {
+        console.log(error)
+        
+      })
+
+  }
+  
 }
 </script>
 
