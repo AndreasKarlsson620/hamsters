@@ -55,12 +55,12 @@
                     <div v-if="!$v.hamster.url.url" class="error-class">Please enter a valid url</div>
                 </div>
 
-                <button @click="submitForm" type="submit">
+                <button :disabled="isLoading" @click.prevent="submitForm()" type="submit">
                     <span>Submit</span>
                 </button>
 
                 <div v-show="isLoading">Loading...</div>
-                <div v-show="success">Yay! Your hamster is now ready for battle!</div>
+                <div v-show="success">Your hamster is now ready for battle!</div>
             </form>
         </div>
     </div>
@@ -75,7 +75,7 @@ export default {
         return {
             hamster: {
                 name: "",
-                age: Number,
+                age: 0,
                 food: "",
                 loves: "",
                 url: "",
@@ -122,9 +122,17 @@ export default {
                 axios
                     .post("/upload", this.hamster)
                     .then((response) => {
-                        console.log("Detta är response", response.data);
-                        if (response === 200) {
+                        console.log("Detta är response", response);
+                        if (response.status === 200) {
+                            this.isLoading = false;
                             this.success = true;
+
+                            this.hamster.name = "";
+                            this.hamster.age = 0;
+                            this.hamster.food = "";
+                            this.hamster.loves = "";
+                            this.hamster.url = "";
+                            this.$v.$reset();
                         }
                     })
                     .catch((error) => {
@@ -132,9 +140,6 @@ export default {
                         this.error = true;
                     });
             }
-        },
-        axiosFunktion: function () {
-            console.log("Detta är hamster-objektet som skickas", this.hamster);
         },
     },
 };
@@ -167,6 +172,10 @@ input {
     border-radius: 3px;
     border: none;
 }
+.error-class {
+    font-size: 0.8em;
+    color: red;
+}
 button {
     text-align: center;
     background-color: #ff937b;
@@ -177,14 +186,14 @@ button {
     height: 25px;
     transition: 2s;
     transform: translateX(-50%);
-    margin-left: 50%;
+    margin-left: 30%;
 }
+/* Effekt på knappen */
 
 span {
     position: relative;
     z-index: 2;
 }
-
 button:after {
     position: absolute;
     content: "";
@@ -196,16 +205,11 @@ button:after {
     transition: 1s;
     border-radius: 5px;
 }
-
 button:hover {
     color: black;
 }
 
 button:hover:after {
     width: 100%;
-}
-.error-class {
-    font-size: 0.8em;
-    color: red;
 }
 </style>
