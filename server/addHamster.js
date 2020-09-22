@@ -1,38 +1,32 @@
 const { MongoClient, ObjectID } = require('mongodb')
 
 const url = '';
-const dbName = '';
-const collectionName = '';
+const dbName = 'grp5';
+const collectionName = 'grp5';
 
-function addHamster(requestBody, callback)
-{
+function addHamster(requestBody, callback) {
 	const doc = requestBody
 	MongoClient.connect(
 		url,
 		{ useUnifiedTopology: true },
-		async (error, client) =>
-		{
-			if( error )
-			{
+		async (error, client) => {
+			if (error) {
 				callback('"ERROR!! Could not connect"');
 				return;
 			}
 			const col = client.db(dbName).collection(collectionName);
-			try
-			{
+			try {
 				const result = await col.insertOne(doc);
 				callback({
 					result: result.result,
 					ops: result.ops
 				})
 			}
-			catch(error)
-			{
+			catch (error) {
 				console.error('addHamster error: ' + error.message);
 				callback('"ERROR!! Query error"');
 			}
-			finally
-			{
+			finally {
 				client.close();
 			}
 		}
