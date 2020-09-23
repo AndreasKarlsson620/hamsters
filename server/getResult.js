@@ -1,13 +1,24 @@
 const { MongoClient, ObjectID } = require('mongodb')
 
-const url = '';
+const uri = '';//mongodb+srv://<username>:<password>@cluster0.9pbrz.mongodb.net/grp5
 const dbName = '';
 const collectionName = '';
+/*
+mongo "mongodb+srv://cluster0.9pbrz.mongodb.net/grp5" --username <username> --password <password>
 
-function getResult(filter, callback)
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://node-user:<password>@cluster0.gwjgs.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+*/
+function getResult(callback)
 {
 	MongoClient.connect(
-		url,
+		uri,
 		{ useUnifiedTopology: true },
 		async (error, client) =>
 		{

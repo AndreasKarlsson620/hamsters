@@ -19,17 +19,17 @@ app.use(bodyParser.json())
 
 //ROUTES
 
-app.get("/", (request, response) => {
+app.get("/", (req, res) => {
 	console.log("Listening on port: ", port);
-	response.send("Woho it works!")
+	res.send("Woho it works!")
 });
 
 //GET RANDOM HAMSTERS
 app.get('/battle', (req, res) => {
-	// getRandomHamsters(dataOrError => {
-	// 	res.send(dataOrError)
-	// });
-	res.send("Battle works!")
+	getRandomHamsters(dataOrError => {
+		res.send(dataOrError)
+	});
+	//res.send("/battle works!")
 })
 
 //GET SPECIFIC HAMSTERS
@@ -51,16 +51,15 @@ app.get('/stats', (req, res) => {
 	getStatistics(dataOrError => {
 		res.send(dataOrError)
 	})
+	////res.send("/stats works!")
 })
 
 //ADD HAMSTER
 app.post('/upload', (req, res) => {
-	console.log("På väg att skicka ett post-request")
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError)
 	})
-	res.send("/ulpoad funkar!")
-
+	//res.send("/ulpoad works!")
 })
 
 //START WEB SERVER
