@@ -46,3 +46,7 @@ function getResult(callback)
 		}
 	)
 }
+
+module.exports = {
+	getResult
+}

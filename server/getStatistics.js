@@ -46,3 +46,7 @@ function getStatistics(callback)
 		}
 	)
 }
+
+module.exports = {
+	getStatistics
+}
