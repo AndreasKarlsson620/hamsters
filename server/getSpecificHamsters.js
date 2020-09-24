@@ -46,3 +46,7 @@ function getSpecificHamsters(id1, id2, callback)
 		}
 	)
 }
+
+module.exports = {
+	getSpecificHamsters
+}

@@ -43,3 +43,7 @@ function addHamster(requestBody, callback) {
 		}
 	)
 }
+
+module.exports = {
+	addHamster
+}

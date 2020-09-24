@@ -46,3 +46,7 @@ function getRandomHamsters(callback)
 		}
 	)
 }
+
+module.exports = {
+	getRandomHamsters
+}
