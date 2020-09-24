@@ -59,7 +59,8 @@ app.post('/upload', (req, res) => {
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError)
 	})
-	//res.send("/ulpoad works!")
+	res.send("/upload funkar!")
+
 })
 
 //START WEB SERVER
