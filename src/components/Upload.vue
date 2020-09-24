@@ -132,6 +132,7 @@ export default {
                             this.hamster.food = "";
                             this.hamster.loves = "";
                             this.hamster.url = "";
+                            //Reset formuläret
                             this.$v.$reset();
                         }
                     })
@@ -202,7 +203,7 @@ button:after {
     width: 0;
     height: 100%;
     background: #ff7859;
-    transition: 1s;
+    transition: all 0.2s;
     border-radius: 5px;
 }
 button:hover {
