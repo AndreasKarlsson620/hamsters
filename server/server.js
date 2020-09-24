@@ -59,7 +59,7 @@ app.post('/upload', (req, res) => {
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError)
 	})
-	res.send("/ulpoad funkar!")
+	res.send("/upload funkar!")
 
 })
 
