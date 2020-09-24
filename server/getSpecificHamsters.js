@@ -17,6 +17,8 @@ client.connect(err => {
 */
 function getSpecificHamsters(id1, id2, callback)
 {
+	const hamster1 = id1
+	const hamster2 = id2
 	MongoClient.connect(
 		uri,
 		{ useUnifiedTopology: true },
@@ -30,7 +32,7 @@ function getSpecificHamsters(id1, id2, callback)
 			const col = client.db(dbName).collection(collectionName);
 			try
 			{
-				const cursor = await col.find({_id:{$in:[?,?]}});//?=id
+				const cursor = await col.find({_id:{$in:[hamster1,hamster2]}});
 				const array = await cursor.toArray()
 				callback(array);
 			}
