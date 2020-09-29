@@ -9,7 +9,7 @@
 import SideBar from "../src/components/SideBar.vue";
 
 export default {
-  name: "Appo",
+  name: "App",
   components: {
     SideBar
   }
@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 #app {
-  min-height: 700px;
+  min-height: 300px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

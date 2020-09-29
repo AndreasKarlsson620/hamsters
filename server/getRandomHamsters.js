@@ -1,8 +1,8 @@
 const { MongoClient, ObjectID } = require('mongodb')
 
 const url = "mongodb+srv://sharmin:sharminmousumi001@gmail.com@cluster0.9pbrz.mongodb.net/grp5?retryWrites=true&w=majority";
-const dbName = 'grp5';
-const collectionName = 'grp5';
+const dbName="grp5";
+const collectionName="grp5";
 
 function getRandomHamsters(filter, callback)
 {
