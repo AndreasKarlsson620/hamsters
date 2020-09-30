@@ -1,55 +1,107 @@
 <template>
-  <div class="container">
-    <h1>Battle 1</h1>
-    <h3>Pick one</h3>
-    <div class="btl_fieled"></div>
-    <div class="btm">
-      <div>Previous</div>
-      <div><router-link to="/Battles/battle2">Next</router-link></div>
+    <div class="container">
+
+        <div id="navbar">
+        <h1>Battle </h1>
+        
+        </div>
+        
+        <div id="vs" style="position:relative; top:220px"><h2>VS</h2></div> 
+         <div  id="Json" v-for="Hamster in ApiData" v-bind:key="Hamster.id">
+                 <p id="id"> ID:{{ Hamster.id}}</p> 
+                  <p id="imgName">
+                    <img :src="getImgUrl(Hamster.imgName)" v-bind:alt="Hamster.imgName" v-on:click="CuteVote(Hamster.id)" style="width: 450px;height: 400px"></p>
+                  
+                  <p id="Name">Name:{{ Hamster.name}}</p>    
+                  <p id="age"> AGE:{{ Hamster.age}}</p>
+                   
+              
+                  
+         </div>    
+        
     </div>
-  </div>
 </template>
 
 <script>
+import axios from 'axios';
+//import json from "@/assets/hamster.json";
+
+
+
 export default {
-  name: "Battle"
-};
+    
+    name: "Battle",
+     data () {
+    return {
+      ApiData: null
+      
+    }
+  },
+   created () {
+    // fetch the data when the view is created and the data is
+    // already being observed
+    this.getJsonData()
+  },
+  watch: {
+    // call again the method if the route changes
+    '$route': 'getJsonData'
+  },
+  methods:
+   {
+        getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+},
+getImgUrl(pic) {
+    return require('../assets/hamsters/'+pic)
+},
+     
+  getJsonData(){
+     
+      axios
+      .get('hamster.json') // .get('/battle')
+      .then(response =>{ 
+         // this.ApiData=new Array(2);
+          //this.ApiData.push(response.data[this.getRandomInt(41)]); 
+          //this.ApiData.push(response.data[this.getRandomInt(41)]);
+           this.ApiData= response.data.slice(0,2);
+
+
+          //return this.ApiData;        //this.getRandomInt();
+         // (this.ApiData = response.data)
+      // console.log(this.ApiData);
+      
+      console.log(this.getRandomInt(41), response.data[this.getRandomInt(41)])
+      })
+      
+      .catch(error => {
+        console.log(error)
+      })
+      
+  },
+  },
+ 
+  
+}
 </script>
 
-<style scoped>
-.container {
-  text-align: center;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+<style scope>
+#navbar > h1{
+text-align: center;
 }
-.btl_fieled {
-  height: 280px;
-}
-.btm {
-  width: 80%;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
+#vs {
+text-align: center;
+
 }
 
-.btm > div {
-  height: 50px;
-  width: 100px;
-  background-color: #2c3e50;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  color: white;
-}
-.btm > div > * {
-  color: white;
-  text-decoration: none;
+#Json{
+  display: grid;
+  float: left;
+  margin-right: 15px;
+  margin-left: 25px;
 }
 
-.container > * {
-  margin: 10px;
+.container > *{
+    margin: 1px;   
 }
+
 </style>

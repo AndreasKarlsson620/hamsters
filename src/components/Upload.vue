@@ -69,7 +69,6 @@
 <script>
 import axios from "axios";
 import { required, minLength, between, url } from "vuelidate/lib/validators";
-
 export default {
     data() {
         return {
@@ -80,7 +79,6 @@ export default {
                 loves: "",
                 url: "",
             },
-
             isLoading: false,
             success: false,
         };
@@ -117,7 +115,6 @@ export default {
                 console.log("You entered a valid form!");
                 console.log("Detta är hamsterobjektet:", this.hamster);
                 this.isLoading = true;
-
                 //Post-funktion
                 axios
                     .post("/upload", this.hamster)
@@ -126,7 +123,6 @@ export default {
                         if (response.status === 200) {
                             this.isLoading = false;
                             this.success = true;
-
                             this.hamster.name = "";
                             this.hamster.age = 0;
                             this.hamster.food = "";
@@ -162,7 +158,6 @@ h3 {
     padding: 1.5em;
     border-radius: 8px;
 }
-
 label {
     display: inline-block;
     margin: 7px;
@@ -190,7 +185,6 @@ button {
     margin-left: 30%;
 }
 /* Effekt på knappen */
-
 span {
     position: relative;
     z-index: 2;
@@ -209,7 +203,6 @@ button:after {
 button:hover {
     color: black;
 }
-
 button:hover:after {
     width: 100%;
 }
