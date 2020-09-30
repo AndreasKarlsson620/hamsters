@@ -15,34 +15,39 @@ client.connect(err => {
   client.close();
 });
 */
+<<<<<<< HEAD
 function getSpecificHamsters(id1, id2, callback)
 {
 	const hamster1 = id1
 	const hamster2 = id2
+=======
+function getSpecificHamsters(id1, id2, callback) {
+>>>>>>> johanna-2
 	MongoClient.connect(
 		uri,
 		{ useUnifiedTopology: true },
-		async (error, client) =>
-		{
-			if( error )
-			{
+		async (error, client) => {
+			if (error) {
 				callback('"ERROR!! Could not connect"');
 				return;
 			}
 			const col = client.db(dbName).collection(collectionName);
+<<<<<<< HEAD
 			try
 			{
 				const cursor = await col.find({_id:{$in:[hamster1,hamster2]}});
+=======
+			try {
+				// const cursor = await col.find({_id:{$in:[?,?]}});//?=id
+>>>>>>> johanna-2
 				const array = await cursor.toArray()
 				callback(array);
 			}
-			catch(error)
-			{
+			catch (error) {
 				console.log('Query error: ' + error.message);
 				callback('"ERROR!! Query error"');
 			}
-			finally
-			{
+			finally {
 				client.close();
 			}
 		}

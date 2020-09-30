@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <h1>Upload</h1>
         <UploadForm />
     </div>
 </template>

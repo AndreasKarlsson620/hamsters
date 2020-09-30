@@ -7,10 +7,16 @@
                     <label>Name</label>
                     <input v-model="hamster.name" type="text" required />
                     <div
-                        v-if="!$v.hamster.name.required && $v.hamster.name.$dirty"
+                        v-if="
+                            !$v.hamster.name.required && $v.hamster.name.$dirty
+                        "
                         class="error-class"
-                    >Field is required</div>
-                    <div v-if="!$v.hamster.name.minLength" class="error-class">At least 3 characters</div>
+                    >
+                        Field is required
+                    </div>
+                    <div v-if="!$v.hamster.name.minLength" class="error-class">
+                        At least 3 characters
+                    </div>
                 </div>
 
                 <div>
@@ -19,30 +25,42 @@
                     <div
                         v-if="!$v.hamster.age.between && $v.hamster.age.$dirty"
                         class="error-class"
-                    >Age must be between 0 -100</div>
+                    >
+                        Age must be between 0 -100
+                    </div>
                 </div>
 
                 <div>
                     <label>Eats</label>
                     <input v-model="hamster.food" type="text" required />
                     <div
-                        v-if="!$v.hamster.food.required && $v.hamster.food.$dirty"
+                        v-if="
+                            !$v.hamster.food.required && $v.hamster.food.$dirty
+                        "
                         class="error-class"
-                    >You're not starving your hamster, right?</div>
-                    <div v-if="!$v.hamster.food.minLength" class="error-class">At least 3 characters</div>
+                    >
+                        You're not starving your hamster, right?
+                    </div>
+                    <div v-if="!$v.hamster.food.minLength" class="error-class">
+                        At least 3 characters
+                    </div>
                 </div>
 
                 <div>
                     <label>Loves</label>
                     <input v-model="hamster.loves" type="text" required />
                     <div
-                        v-if="!$v.hamster.loves.required && $v.hamster.loves.$dirty"
+                        v-if="
+                            !$v.hamster.loves.required &&
+                            $v.hamster.loves.$dirty
+                        "
                         class="error-class"
-                    >Field is required</div>
-                    <div
-                        v-if="!$v.hamster.loves.minLength"
-                        class="error-class"
-                    >At least 3 characters</div>
+                    >
+                        Field is required
+                    </div>
+                    <div v-if="!$v.hamster.loves.minLength" class="error-class">
+                        At least 3 characters
+                    </div>
                 </div>
 
                 <div>
@@ -51,16 +69,26 @@
                     <div
                         v-if="!$v.hamster.url.required && $v.hamster.url.$dirty"
                         class="error-class"
-                    >Field is required</div>
-                    <div v-if="!$v.hamster.url.url" class="error-class">Please enter a valid url</div>
+                    >
+                        Field is required
+                    </div>
+                    <div v-if="!$v.hamster.url.url" class="error-class">
+                        Please enter a valid url
+                    </div>
                 </div>
 
-                <button :disabled="isLoading" @click.prevent="submitForm()" type="submit">
+                <button
+                    :disabled="isLoading"
+                    @click.prevent="submitForm()"
+                    type="submit"
+                >
                     <span>Submit</span>
                 </button>
 
                 <div v-show="isLoading">Loading...</div>
-                <div v-show="success">Your hamster is now ready for battle!</div>
+                <div v-show="success">
+                    Your hamster is now ready for battle!
+                </div>
             </form>
         </div>
     </div>
@@ -79,6 +107,13 @@ export default {
                 loves: "",
                 url: "",
             },
+
+            options: {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            },
+
             isLoading: false,
             success: false,
         };
@@ -115,9 +150,15 @@ export default {
                 console.log("You entered a valid form!");
                 console.log("Detta är hamsterobjektet:", this.hamster);
                 this.isLoading = true;
+                this.hamster.age = Number(this.hamster.age);
+                console.log(
+                    "Värdet av this.hamster.age efter Number()",
+                    this.hamster.age
+                );
+
                 //Post-funktion
                 axios
-                    .post("/upload", this.hamster)
+                    .post("/upload", this.hamster, this.options)
                     .then((response) => {
                         console.log("Detta är response", response);
                         if (response.status === 200) {
@@ -157,6 +198,10 @@ h3 {
     margin: 0 auto;
     padding: 1.5em;
     border-radius: 8px;
+    margin-top: 50px;
+}
+.form > div {
+    background-color: lightpink;
 }
 label {
     display: inline-block;
@@ -164,7 +209,7 @@ label {
 }
 input {
     width: 100px;
-    height: 13px;
+    height: 15px;
     border-radius: 3px;
     border: none;
 }
@@ -182,7 +227,7 @@ button {
     height: 25px;
     transition: 2s;
     transform: translateX(-50%);
-    margin-left: 30%;
+    margin-left: 35%;
 }
 /* Effekt på knappen */
 span {
@@ -202,6 +247,7 @@ button:after {
 }
 button:hover {
     color: black;
+    cursor: pointer;
 }
 button:hover:after {
     width: 100%;

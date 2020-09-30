@@ -1,6 +1,11 @@
 const { MongoClient, ObjectID } = require('mongodb')
 
+<<<<<<< HEAD
 const uri = 'mongodb+srv://<username>:<password>@cluster0.9pbrz.mongodb.net/grp5?retryWrites=true&w=majority';
+=======
+const uri = 'mongodb+srv://johanna:johanna_forsberg@msn.com@cluster0.9pbrz.mongodb.net/grp5';
+//mongodb+srv://<username>:<password>@cluster0.9pbrz.mongodb.net/grp5
+>>>>>>> johanna-2
 const dbName = 'grp5';
 const collectionName = 'grp5';
 
@@ -32,7 +37,10 @@ function addHamster(requestBody, callback) {
 		}
 	)
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> johanna-2
 module.exports = {
 	addHamster
 }
