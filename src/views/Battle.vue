@@ -1,7 +1,9 @@
 <template>
     <div class="container">
+
         <div id="navbar">
         <h1>Battle </h1>
+        
         </div>
         
         <div id="vs" style="position:relative; top:220px"><h2>VS</h2></div> 
@@ -12,7 +14,8 @@
                   
                   <p id="Name">Name:{{ Hamster.name}}</p>    
                   <p id="age"> AGE:{{ Hamster.age}}</p>
-                  
+                   <button v-on:click="Vote(Hamster.id)">Vote for cute one</button>
+              
                   
          </div>    
         
@@ -55,7 +58,7 @@ getImgUrl(pic) {
   getJsonData(){
      
       axios
-      .get('hamster.json') // .get('https://localhost:1357//battle')
+      .get('hamster.json') // .get('/battle')
       .then(response =>{ 
          // this.ApiData=new Array(2);
           //this.ApiData.push(response.data[this.getRandomInt(41)]); 
@@ -75,20 +78,8 @@ getImgUrl(pic) {
       })
       
   },
-  }
-  /*vote(id){
-      axios
-        .post(''hamster.json'//battle/:id1/:id2',{vote:'',id1: id1,id2:id2})
-        .then(response => {console.log(response.data)
-                if(response !== null){
-                    this.result();
-          }  }) 
-        .catch(error => {
-        console.log(error)
-        
-      })
-
-  }*/
+  },
+ 
   
 }
 </script>

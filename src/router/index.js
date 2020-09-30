@@ -6,6 +6,7 @@ import Statistics from "../views/Statistics.vue";
 import Upload from "../views/Upload.vue";
 import Battle2 from "../views/Battles/Battle2.vue";
 
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -42,7 +43,8 @@ const routes = [
     path: "/Battles/battle2",
     name: "Battle2",
     component: Battle2
-  }
+  },
+
 ];
 
 const router = new VueRouter({
