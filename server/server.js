@@ -29,7 +29,7 @@ app.get('/battle', (req, res) => {
 	getRandomHamsters(dataOrError => {
 		res.send(dataOrError)
 	});
-	//res.send("/battle works!")
+	// res.send("/battle works!")
 })
 
 //GET SPECIFIC HAMSTERS
@@ -59,7 +59,8 @@ app.post('/upload', (req, res) => {
 	addHamster(req.body, dataOrError => {
 		res.send(dataOrError)
 	})
-	res.send("/upload funkar!")
+	console.log("Detta är req.body", req.body)
+	// res.send("/upload funkar!")
 
 })
 
