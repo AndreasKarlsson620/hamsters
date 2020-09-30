@@ -14,7 +14,7 @@
                   
                   <p id="Name">Name:{{ Hamster.name}}</p>    
                   <p id="age"> AGE:{{ Hamster.age}}</p>
-                   <button v-on:click="Vote(Hamster.id)">Vote for cute one</button>
+                   
               
                   
          </div>    
