@@ -9,7 +9,7 @@
 import SideBar from "../src/components/SideBar.vue";
 
 export default {
-    name: "Appo",
+    name: "App",
     components: {
         SideBar,
     },
