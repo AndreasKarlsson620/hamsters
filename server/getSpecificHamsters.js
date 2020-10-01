@@ -1,28 +1,11 @@
 const { MongoClient, ObjectID } = require('mongodb')
 
-const uri = '';//mongodb+srv://<username>:<password>@cluster0.9pbrz.mongodb.net/grp5
+const uri = '';//mongodb+srv://<username>:<password>@cluster0.9pbrz.mongodb.net/grp5?retryWrites=true&w=majority";
 const dbName = 'grp5';
 const collectionName = 'grp5';
-/*
-mongo "mongodb+srv://cluster0.9pbrz.mongodb.net/grp5" --username <username> --password <password>
-
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://node-user:<password>@cluster0.gwjgs.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
-*/
-<<<<<<< HEAD
-function getSpecificHamsters(id1, id2, callback)
-{
+function getSpecificHamsters(id1, id2, callback) {
 	const hamster1 = id1
 	const hamster2 = id2
-=======
-function getSpecificHamsters(id1, id2, callback) {
->>>>>>> johanna-2
 	MongoClient.connect(
 		uri,
 		{ useUnifiedTopology: true },
@@ -32,14 +15,8 @@ function getSpecificHamsters(id1, id2, callback) {
 				return;
 			}
 			const col = client.db(dbName).collection(collectionName);
-<<<<<<< HEAD
-			try
-			{
-				const cursor = await col.find({_id:{$in:[hamster1,hamster2]}});
-=======
 			try {
-				// const cursor = await col.find({_id:{$in:[?,?]}});//?=id
->>>>>>> johanna-2
+				const cursor = await col.find({ _id: { $in: [hamster1, hamster2] } });
 				const array = await cursor.toArray()
 				callback(array);
 			}

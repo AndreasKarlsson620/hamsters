@@ -1,11 +1,11 @@
-const { MongoClient, ObjectID } = require('mongodb')
+const { MongoClient } = require('mongodb')
 
-<<<<<<< HEAD
-const uri = 'mongodb+srv://<username>:<password>@cluster0.9pbrz.mongodb.net/grp5?retryWrites=true&w=majority';
-=======
-const uri = 'mongodb+srv://johanna:johanna_forsberg@msn.com@cluster0.9pbrz.mongodb.net/grp5';
-//mongodb+srv://<username>:<password>@cluster0.9pbrz.mongodb.net/grp5
->>>>>>> johanna-2
+// const password = process.env.password1;
+// const user = process.env.user1;
+
+// const uri = 'mongodb+srv://<user>:<password>.com@cluster0.9pbrz.mongodb.net/grp5?retryWrites=true&w=majority';
+const uri = 'mongodb://localhost:27017';
+
 const dbName = 'grp5';
 const collectionName = 'grp5';
 
@@ -16,7 +16,8 @@ function addHamster(requestBody, callback) {
 		{ useUnifiedTopology: true },
 		async (error, client) => {
 			if (error) {
-				callback('"ERROR!! Could not connect"');
+				console.log("Error add-hamster", error.message)
+				callback('"ERROR!! Could not connect add-hamster"');
 				return;
 			}
 			const col = client.db(dbName).collection(collectionName);
@@ -37,10 +38,6 @@ function addHamster(requestBody, callback) {
 		}
 	)
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> johanna-2
 module.exports = {
 	addHamster
 }

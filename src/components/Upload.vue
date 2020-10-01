@@ -1,8 +1,8 @@
 <template>
     <div class="template-div">
+        <h1>Upload a hamster!</h1>
         <div class="form">
             <form @submit="submitForm">
-                <h3>Upload a hamster</h3>
                 <div>
                     <label>Name</label>
                     <input v-model="hamster.name" type="text" required />
@@ -144,23 +144,16 @@ export default {
     },
     methods: {
         submitForm: function () {
-            //Validering
+            //Validation
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 console.log("You entered a valid form!");
-                console.log("Detta är hamsterobjektet:", this.hamster);
                 this.isLoading = true;
                 this.hamster.age = Number(this.hamster.age);
-                console.log(
-                    "Värdet av this.hamster.age efter Number()",
-                    this.hamster.age
-                );
-
-                //Post-funktion
                 axios
                     .post("/upload", this.hamster, this.options)
                     .then((response) => {
-                        console.log("Detta är response", response);
+                        console.log("Response", response);
                         if (response.status === 200) {
                             this.isLoading = false;
                             this.success = true;
@@ -169,7 +162,7 @@ export default {
                             this.hamster.food = "";
                             this.hamster.loves = "";
                             this.hamster.url = "";
-                            //Reset formuläret
+                            //Resets the form
                             this.$v.$reset();
                         }
                     })
