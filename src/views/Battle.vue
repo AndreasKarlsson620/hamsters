@@ -3,15 +3,13 @@
 
         <div id="navbar">
         <h1>Battle </h1>
-        
         </div>
+        <div>
         
-        <div id="vs" style="position:relative; top:220px"><h2>VS</h2></div> 
-         <div  id="Json" v-for="Hamster in ApiData" v-bind:key="Hamster.id">
-                 <p id="id"> ID:{{ Hamster.id}}</p> 
-                  <p id="imgName">
+        <div id="vs" style="position:relative; top:220px"><h2>VS</h2></div> </div>
+         <div  id="Json" v-for="Hamster in ApiData" :key="Hamster.id">
+                 <p id="imgName">
                     <img :src="getImgUrl(Hamster.imgName)" v-bind:alt="Hamster.imgName" v-on:click="CuteVote(Hamster.id)" style="width: 450px;height: 400px"></p>
-                  
                   <p id="Name">Name:{{ Hamster.name}}</p>    
                   <p id="age"> AGE:{{ Hamster.age}}</p>
                    
@@ -33,55 +31,52 @@ export default {
     name: "Battle",
      data () {
     return {
-      ApiData: null
-      
+      ApiData: null,
+      options: {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            },
+       
     }
+    
   },
    created () {
     // fetch the data when the view is created and the data is
     // already being observed
-    this.getJsonData()
+    this.getData()
   },
   watch: {
     // call again the method if the route changes
-    '$route': 'getJsonData'
+    '$route': 'getData'
   },
-  methods:
-   {
-        getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-},
-getImgUrl(pic) {
+  
+
+ 
+  methods:{
+    getImgUrl(pic) {
     return require('../assets/hamsters/'+pic)
 },
      
-  getJsonData(){
+    getData() {
      
-      axios
-      .get('hamster.json') // .get('/battle')
-      .then(response =>{ 
-         // this.ApiData=new Array(2);
-          //this.ApiData.push(response.data[this.getRandomInt(41)]); 
-          //this.ApiData.push(response.data[this.getRandomInt(41)]);
-           this.ApiData= response.data.slice(0,2);
+     
+     
+    axios
+      .get('/battle')
+      .then(response => (this.ApiData = response.data))
 
-
-          //return this.ApiData;        //this.getRandomInt();
-         // (this.ApiData = response.data)
-      // console.log(this.ApiData);
-      
-      console.log(this.getRandomInt(41), response.data[this.getRandomInt(41)])
-      })
-      
       .catch(error => {
         console.log(error)
+        this.errored = true
       })
-      
-  },
-  },
- 
+    
   
+  },
+  
+  }
 }
+
 </script>
 
 <style scope>
@@ -101,7 +96,8 @@ text-align: center;
 }
 
 .container > *{
-    margin: 1px;   
+    margin: 1px;  
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 </style>

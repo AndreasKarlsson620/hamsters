@@ -1,6 +1,6 @@
 const { MongoClient, ObjectID } = require('mongodb')
 
-const uri = '';//mongodb+srv://<username>:<password>@cluster0.9pbrz.mongodb.net/grp5
+const uri = 'mongodb+srv://sharmin:sharminmousumi001@gmail.com@cluster0.9pbrz.mongodb.net/grp5?retryWrites=true&w=majority';
 const dbName = 'grp5';
 const collectionName = 'grp5';
 /*
