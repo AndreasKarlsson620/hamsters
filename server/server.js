@@ -1,7 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+// const env = require('dotenv');
 const app = express()
-const port = 1357;
+// const port = 1357;
+const port = process.env.PORT || 1357;
 
 const { getRandomHamsters } = require('./getRandomHamsters.js');
 const { getSpecificHamsters } = require('./getSpecificHamsters.js');

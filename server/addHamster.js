@@ -1,11 +1,11 @@
 const { MongoClient } = require('mongodb')
 
-// const password = process.env.password1;
-// const user = process.env.user1;
+// const password = process.env.PASSWORD;
+// const user = process.env.USER;
 
-// const uri = 'mongodb+srv://<user>:<password>.com@cluster0.9pbrz.mongodb.net/grp5?retryWrites=true&w=majority';
-const uri = 'mongodb://localhost:27017';
+const uri = 'mongodb+srv://andreas:andreas.karlsson90@hotmail.com@cluster0.9pbrz.mongodb.net/grp5?retryWrites=true&w=majority';
 
+// const uri = 'mongodb://localhost:27017';
 const dbName = 'grp5';
 const collectionName = 'grp5';
 
